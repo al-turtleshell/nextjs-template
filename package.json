@@ -1,5 +1,5 @@
 {
-  "name": "vesontio_reservation",
+  "name": "template",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "test:components": "jest src/specs/components",
-    "test:unit:server": "jest src/specs/server"
+    "test:unit:server": "jest src/specs/server",
+    "test:integration": "jest src/specs/integration",
+    "migrate:up": "prisma migrate dev",
+    "generate:prisma": "prisma generate"
   },
   "dependencies": {
     "@babel/core": "^7.21.8",
