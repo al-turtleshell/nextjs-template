@@ -27,8 +27,7 @@ jobs:
         script: |
           const fs = require('fs');
           const auditResults = JSON.parse(fs.readFileSync('npm_audit.json', 'utf8'));
-          const { context } = github;
-
+          
           const vulnerabilities = auditResults.metadata.vulnerabilities;
           if (vulnerabilities === 0) {
             console.log('No vulnerabilities found.');
