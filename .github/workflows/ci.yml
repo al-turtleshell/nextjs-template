@@ -80,9 +80,6 @@ jobs:
           echo "DATABASE_URL=postgresql://test_dev:test_password@localhost:8888/test_database?schema=public" >> .env
           echo "NEXTAUTH_URL=http://localhost:3000" >> .env
           echo "NEXT_URL=http://localhost:3000" >> .env
-
-      - name: Wait for database to be ready
-        run: dockerize -wait tcp://localhost:8888 -timeout 1m
       
       - name: Run database migrations
         run: npm run migrate:up
