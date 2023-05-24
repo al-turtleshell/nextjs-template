@@ -5,6 +5,7 @@
 import { render, screen } from '@testing-library/react';
 import Home from '../../pages/index';
 
+
 describe('Home component', () => {
   test('renders main heading', () => {
     render(<Home />);

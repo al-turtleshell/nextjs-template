@@ -1,9 +1,8 @@
 import { useSession, signOut, signIn } from 'next-auth/react'
 import Head from 'next/head'
-import { trpc } from '../utils/trpc'
 
 export default function Home() {
-  const { data: session } = useSession()
+ const { data: session } = useSession()
   
   return (
     <>
