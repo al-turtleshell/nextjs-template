@@ -47,4 +47,4 @@ jobs:
             process.exit(1);
           }
     - name: Run components tests
-      run: npm test:components
+      run: npm run test:components
