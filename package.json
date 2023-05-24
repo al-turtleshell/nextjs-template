@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:components": "jest src/specs/components"
+    "test:components": "jest src/specs/components",
+    "test:unit:server": "jest src/specs/server"
   },
   "dependencies": {
     "@babel/core": "^7.21.8",

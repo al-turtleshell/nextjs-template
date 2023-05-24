@@ -48,3 +48,6 @@ jobs:
           }
     - name: Run components tests
       run: npm run test:components
+    
+    - name: Run server unit tests
+      run: npm run test:unit:server
