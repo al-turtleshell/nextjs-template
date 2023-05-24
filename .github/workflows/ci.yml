@@ -1,4 +1,4 @@
-name: NPM Audit
+name: Continuous Integration
 
 on:
   workflow_dispatch:
@@ -46,3 +46,5 @@ jobs:
             }
             process.exit(1);
           }
+    - name: Run tests
+      run: npm test
