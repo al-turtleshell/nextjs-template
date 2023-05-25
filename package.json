@@ -59,17 +59,5 @@
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "next lint --fix",
-      "prettier --write",
-      "tsc --noEmit"
-    ]
   }
 }
