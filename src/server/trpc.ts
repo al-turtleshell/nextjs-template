@@ -10,7 +10,7 @@ interface CreateInnerContextOptions {
 
 export const createInnerContext = async (opts: CreateInnerContextOptions) => {
     const { session } = opts;
-
+    
     if (!session) {
         return {
             prisma,
