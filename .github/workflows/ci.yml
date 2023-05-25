@@ -7,7 +7,7 @@ on:
       - '*'
 
 jobs:
-  setup:
+  basic_checks:
     runs-on: ubuntu-latest
 
     steps:
@@ -56,9 +56,9 @@ jobs:
       - name: Server unit testing
         run: npm run test:unit:server
 
-  container-job:
+  integration_test:
     runs-on: ubuntu-latest
-    needs: setup
+    needs: basic_checks
 
     services:
       db:
