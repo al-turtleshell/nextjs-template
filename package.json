@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write \"src/**/*.+(ts|tsx)\"",
     "test:components": "jest src/specs/components",
     "test:unit:server": "jest src/specs/server",
     "test:integration": "jest src/specs/integration",
@@ -51,6 +52,7 @@
     "eslint-config-next": "^13.4.3",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-react": "^7.32.2",
+    "prettier": "^2.8.8",
     "prisma": "^4.14.0"
   },
   "prisma": {

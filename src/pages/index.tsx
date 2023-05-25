@@ -1,9 +1,9 @@
-import { useSession, signOut, signIn } from 'next-auth/react'
-import Head from 'next/head'
+import { useSession, signOut, signIn } from 'next-auth/react';
+import Head from 'next/head';
 
 export default function Home() {
- const { data: session } = useSession()
-  
+  const { data: session } = useSession();
+
   return (
     <>
       <Head>
@@ -16,15 +16,18 @@ export default function Home() {
         <div>
           <h1>Turtleshell</h1>
         </div>
-        { session ? (      <>
-        Signed in as {session.user?.email || 'no email'} <br />
-        <button onClick={() => signOut()}>Sign out</button>
-      </> ) : (     <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>)}
-    
+        {session ? (
+          <>
+            Signed in as {session.user?.email || 'no email'} <br />
+            <button onClick={() => signOut()}>Sign out</button>
+          </>
+        ) : (
+          <>
+            Not signed in <br />
+            <button onClick={() => signIn()}>Sign in</button>
+          </>
+        )}
       </main>
     </>
-  )
+  );
 }
