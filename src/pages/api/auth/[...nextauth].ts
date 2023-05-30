@@ -2,6 +2,9 @@ import NextAuth from 'next-auth/next';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prisma from '../../../prisma/client';
 import GoogleProvider from 'next-auth/providers/google';
+import { findUserPermission } from '../../../server/repository/user.repository';
+import { Session } from 'next-auth';
+import { PermissionName } from '@prisma/client';
 
 export default NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -12,9 +15,10 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session }) {
-      const newSession = { ...session, role: 'ADMIN' };
-      return newSession;
+    async session({ session, user }): Promise<Session & { permissions: PermissionName[] }> {
+      const userWithPermission = await findUserPermission(user.id);
+
+      return { ...session, permissions: userWithPermission?.permissions ?? [] };
     },
   },
 });

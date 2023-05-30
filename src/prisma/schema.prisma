@@ -43,6 +43,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  permissions   Permission[]
 }
 
 model VerificationToken {
@@ -51,4 +52,14 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Permission {
+  id String @id @default(cuid())
+  name PermissionName @unique
+  users User[]
+}
+
+enum PermissionName {
+  ACCESS_BACKOFFICE
 }
