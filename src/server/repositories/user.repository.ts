@@ -22,3 +22,28 @@ export const findUserPermission = async (
 
   return null;
 };
+
+export const applyBasicPermission = async (userEmail: string): Promise<void> => {
+  await prisma.user.update({
+    where: {
+      email: userEmail,
+    },
+    data: {
+      permissions: {
+        connect: [
+          {
+            name: PermissionName.ACCESS_APPLICATION,
+          },
+        ],
+      },
+    },
+  });
+};
+
+export const listUsers = async (): Promise<User[]> => {
+  return await prisma.user.findMany({
+    include: {
+      permissions: true,
+    },
+  });
+};

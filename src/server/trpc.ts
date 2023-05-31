@@ -3,6 +3,8 @@ import { CreateNextContextOptions } from '@trpc/server/adapters/next';
 import { Session } from 'next-auth';
 import { getSession } from 'next-auth/react';
 import prisma from '../prisma/client';
+import { PermissionName } from '@prisma/client';
+import hasPermissions from './middlewares/hasPermissions';
 
 interface CreateInnerContextOptions {
   session: Session | null;
@@ -14,12 +16,13 @@ export const createInnerContext = async (opts: CreateInnerContextOptions) => {
   if (!session) {
     return {
       prisma,
-      session: { role: 'guest' },
+      session: { permissions: [] as PermissionName[] },
     };
   }
 
   return { session, prisma };
 };
+
 export const createContext = async (opts: CreateNextContextOptions) => {
   const { req } = opts;
 
@@ -42,6 +45,8 @@ export const createContext = async (opts: CreateNextContextOptions) => {
 
 const t = initTRPC.context<typeof createInnerContext>().create();
 
-export const router = t.router;
-
 export const publicProcedure = t.procedure;
+export const router = t.router;
+export const middleware = t.middleware;
+
+export const procedure = (permissions: PermissionName[]) => t.procedure.use(hasPermissions(permissions));

@@ -2,7 +2,7 @@ import NextAuth from 'next-auth/next';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import prisma from '../../../prisma/client';
 import GoogleProvider from 'next-auth/providers/google';
-import { findUserPermission } from '../../../server/repository/user.repository';
+import { applyBasicPermission, findUserPermission } from '../../../server/repositories/user.repository';
 import { Session } from 'next-auth';
 import { PermissionName } from '@prisma/client';
 
@@ -19,6 +19,17 @@ export default NextAuth({
       const userWithPermission = await findUserPermission(user.id);
 
       return { ...session, permissions: userWithPermission?.permissions ?? [] };
+    },
+
+    async signIn({ user }): Promise<boolean> {
+      if (!user || !user.email) {
+        return false;
+      }
+
+      const email = user.email;
+      await applyBasicPermission(email);
+
+      return true;
     },
   },
 });

@@ -10,7 +10,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!session || !session.permissions.includes(PermissionName.ACCESS_BACKOFFICE)) {
     return {
       redirect: {
-        destination: '/api/auth/signin',
+        destination: '/',
         permanent: false,
       },
     };
@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default function Home() {
+export default function BackofficeHome() {
   return (
     <>
       <Head>
