@@ -1,36 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Components architecture
 
-## Getting Started
+**Atomic Components**: At the atomic level, you can have reusable components such as buttons, inputs, labels, etc. These components should focus on a single responsibility and be highly customizable.
 
-First, run the development server:
+**Molecules**: Molecules are made up of atomic components and are slightly more complex. They combine atomic components to create more specific UI elements or functionality.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+**Organisms**: Organisms are higher-level components that combine molecules and atoms to create sections or sections of your UI. They can represent specific features or parts of a page.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Templates**: Templates define the structure of a page or a section of a page. They bring together organisms and provide the overall layout and composition for pages.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Pages**: Pages are the top-level components that represent the different routes or views in your application. They use templates and integrate with the Next.js routing system.

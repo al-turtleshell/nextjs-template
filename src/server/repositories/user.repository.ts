@@ -1,5 +1,5 @@
 import { User, PermissionName } from '@prisma/client';
-import prisma from '../../prisma/client';
+import prisma, { UserWithPermissions } from '../../prisma/client';
 
 export const findUserPermission = async (
   userId: string,
@@ -40,7 +40,7 @@ export const applyBasicPermission = async (userEmail: string): Promise<void> => 
   });
 };
 
-export const listUsers = async (): Promise<User[]> => {
+export const listUsers = async (): Promise<UserWithPermissions[]> => {
   return await prisma.user.findMany({
     include: {
       permissions: true,
